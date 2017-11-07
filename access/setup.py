@@ -22,17 +22,38 @@ def AdHocNetwork(void):
     os.system('sudo ifup wlan0')
 
 def movefile(initpath, endpath):
-    os.system('sudo mv ' + initpath + ' ' + endpath)
+    return os.system('sudo mv ' + initpath + ' ' + endpath)
 
 def copyfile(initpath, endpath):
-    os.system('sudo cp ' + initpath + ' ' + endpath)
+    return os.system('sudo cp ' + initpath + ' ' + endpath)
 
 # Check WiFi connection
 def CheckWiFi(void):
     print("Check wlan0 network")
 
+
 print("Welcome to hostapd application\n")
+
 print("Move dhcpcd file")
-print("sudo mv " + '/etc/dhcpcd.conf' +' '+ './hostapd/oldfiles')
 movefile('/etc/dhcpcd.conf', './hostapd/oldfiles')
-# copyfile('./hostapd/etc', '/etc/dhcpcd.conf')
+copyfile('./hostapd/etc/dhcpcd.conf', '/etc/')
+
+print("Move interface file")
+movefile('/etc/network/interfaces', './hostapd/oldfiles')
+copyfile('./hostapd/etc/network/interfaces', '/etc/network/')
+
+print("Move dnsmasq file")
+movefile('/etc/dnsmasq.conf', './hostapd/oldfiles')
+copyfile('./hostapd/etc/dnsmasq.conf', '/etc/')
+
+print("Move hostapd file")
+movefile('/etc/hostapd/hostapd.conf', './hostapd/oldfiles')
+copyfile('./hostapd/etc/hostapd/hostapd.conf', '/etc/hostapd/')
+
+print("Move hostapd default file")
+movefile('/etc/default/hostapd', './hostapd/oldfiles')
+copyfile('./hostapd/etc/default/hostapd', '/etc/default/')
+
+print("Move systemctl file")
+movefile('/etc/sysctl.conf', './hostapd/oldfiles')
+copyfile('./hostapd/etc/sysctl.conf', '/etc/')
