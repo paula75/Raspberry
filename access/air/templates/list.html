@@ -9,6 +9,9 @@
 {% endif %}
 <form class="field has-addons" method="post">
   <p class="control">
+    <input type="button" class="button is-primary" onclick="window.location.reload()" value="Reload">
+  </p>
+  <p class="control">
     <span class="select">
       <select name="id">
         <option>Network</option>
@@ -51,5 +54,5 @@
         {% endif %}
         {% endfor %}
     </tbody>
-</table>        
+</table>
 {% endblock %}
