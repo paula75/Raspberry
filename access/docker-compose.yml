@@ -1,0 +1,24 @@
+hostapd:
+    restart: always
+    build: ./hostapd
+    volumes:
+        - "/etc/network/interfaces:/etc/network/interfaces"
+        - "/etc/hosts:/etc/hosts"
+    environment:
+        SSID: applepi
+        PASSWD: tanatos123456
+
+    privileged: true
+    net: "host"
+
+
+air:
+    build: ./air
+    volumes:
+        - "./air:/air"
+        - "/etc/network/interfaces:/etc/network/interfaces"
+        - "/etc/wpa_supplicant/wpa_supplicant.conf:/etc/wpa_supplicant/wpa_supplicant.conf"
+    privileged: true
+    net: "host"
+    environment:
+        FLASK_DEBUG: 1

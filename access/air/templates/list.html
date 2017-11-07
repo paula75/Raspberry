@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block title %}Select Network{% endblock %}
+
+{% block content %}
+{% if notification %}
+<div class="notification{% if notification.success %} is-success{% else %} is-danger{% endif %}">
+    {{ notification.message }}
+</div>
+{% endif %}
+<form class="field has-addons" method="post">
+  <p class="control">
+    <span class="select">
+      <select name="id">
+        <option>Network</option>
+        {% for index, net in enumerate(networks) %}
+        {% if net.Name %}
+        <option{% if choice and net.Name == choice.Name %} selected{% endif %} value="{{ index }}">{{ net.Name }}</option>
+        {% endif %}
+        {% endfor %}
+      </select>
+    </span>
+  </p>
+  <p class="control is-expanded">
+    <input class="input" type="password" name="password" placeholder="Password">
+  </p>
+  <p class="control">
+    <input type="submit" class="button is-primary" value="Join">
+  </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Network</th>
+            <th><abbr title="Encryption Type">Enc</abbr></th>
+            <th><abbr title="Signal">Sig</abbr></th>
+            <th><abbr title="Address">Addr</abbr></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for index, net in enumerate(networks) %}
+        {% if net.Name %}
+        <tr{% if current and current.Name == net.Name %} is-selected{% endif %}>
+            <th>{{ index + 1 }}</th>
+            <td><a href="/list?id={{ index }}" title="Join network {{ net.Name }}">{{ net.Name }}</a></td>
+            <td>{{ net.Encryption }}</td>
+            <td>{{ net.Signal }}</td>
+            <td>{{ net.Address }}</td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+    </tbody>
+</table>        
+{% endblock %}

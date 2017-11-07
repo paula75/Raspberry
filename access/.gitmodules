@@ -1,0 +1,9 @@
+[submodule "hostapd"]
+	path = hostapd
+	url = git@github.com:pipex/hostapd.git
+[submodule "wifi"]
+	path = wifi
+	url = git@github.com:pipex/wifi.git
+[submodule "air"]
+	path = air
+	url = git@github.com:pipex/air.git

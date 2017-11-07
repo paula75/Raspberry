@@ -1,0 +1,3 @@
+- [ ] Create web interface to quickly select an SSID
+- [ ] Redirect to captive webportal if wifi is not connected in RPI
+- [ ] If SSID requires captive authentication, redirect client to SSID webportal
