@@ -17,7 +17,6 @@ air:
     volumes:
         - "./air:/air"
         - "/etc/network/interfaces:/etc/network/interfaces"
-        - "/etc/wpa_supplicant/wpa_supplicant.conf:/etc/wpa_supplicant/wpa_supplicant.conf"
     privileged: true
     net: "host"
     environment:

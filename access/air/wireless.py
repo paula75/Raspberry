@@ -235,6 +235,8 @@ def join(iface, ssid, passwd=None):
         logging.warning('Could not enable network')
         return False
 
+    # Check if the connection is done
+
     # Connect
     #if wpa_cli_fail(iface, 'reconnect'):
     #    logging.warning('Could not connect to network')

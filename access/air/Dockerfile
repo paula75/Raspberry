@@ -6,10 +6,8 @@ RUN echo "deb http://archive.raspbian.org/raspbian jessie main" > /etc/apt/sourc
 RUN apt-get update && apt-get -q -y install \
         wireless-tools \
         wpasupplicant \
-        ifupdown \
-        dhcpcd \
         python \
-        python-pip 
+        python-pip
 
 ADD . /air
 WORKDIR /air
