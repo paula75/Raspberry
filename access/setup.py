@@ -22,18 +22,17 @@ def AdHocNetwork(void):
     os.system('sudo ifup wlan0')
 
 def movefile(initpath, endpath):
-    os.system('sudo mv ' + initpath + endpath)
+    os.system('sudo mv ' + initpath + ' ' + endpath)
 
 def copyfile(initpath, endpath):
-    os.system('sudo cp ' + initpath + endpath)
+    os.system('sudo cp ' + initpath + ' ' + endpath)
 
 # Check WiFi connection
 def CheckWiFi(void):
     print("Check wlan0 network")
 
-
 print("Welcome to hostapd application\n")
 print("Move dhcpcd file")
-print("sudo mv " + '/etc/dhcpcd.conf' + './hostapd/oldfiles')
-# movefile('/etc/dhcpcd.conf', './hostapd/oldfiles')
+print("sudo mv " + '/etc/dhcpcd.conf' +' '+ './hostapd/oldfiles')
+movefile('/etc/dhcpcd.conf', './hostapd/oldfiles')
 # copyfile('./hostapd/etc', '/etc/dhcpcd.conf')
