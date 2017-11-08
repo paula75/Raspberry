@@ -106,6 +106,15 @@ def match(line, keyword):
     else:
         return None
 
+def parse_cell(cell):
+    """Applies the rules to the bunch of text describing a cell and returns the
+    corresponding dictionary"""
+    parsed_cell = {}
+    for key in rules:
+        rule = rules[key]
+        parsed_cell.update({key: rule(cell)})
+    return parsed_cell
+
 def append_text(out):
     cells = []
     for line in out.split("\n"):
