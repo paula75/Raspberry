@@ -32,8 +32,8 @@ def checkWiFi():
     proc = subprocess.Popen(["iwconfig"],
             stdout=subprocess.PIPE, universal_newlines=True)
     out, err = proc.communicate()
-    state = matching_line(append_text(state), "ESSID:")
-    if state == "off":
+    state = matching_line(append_text(out), "ESSID:")
+    if state == "off/any":
         return False
     else:
         return True

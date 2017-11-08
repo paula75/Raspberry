@@ -251,12 +251,15 @@ def join(iface, ssid, passwd=None):
         logging.warning('Could not enable network')
         return False
 
+    # Check connection
     time.sleep(5)
-    # Connect
     state = append_text(wpa_cli(iface, 'status'))
     if not get_wpastatus(state) == 'COMPLETED':
        logging.warning('Could not connect to network')
        return False
+
+   # Save network
+    wpa_cli(iface, 'save_config')
 
     # Renew address
     return network
