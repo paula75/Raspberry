@@ -251,7 +251,7 @@ def join(iface, ssid, passwd=None):
         logging.warning('Could not enable network')
         return False
 
-    sleep(5)
+    time.sleep(5)
     # Connect
     state = append_text(wpa_cli(iface, 'status'))
     if not get_wpastatus(state) == 'COMPLETED':

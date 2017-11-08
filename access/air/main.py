@@ -24,6 +24,7 @@ def reload():
 
 @app.route('/list', methods=['GET'])
 def list(notification=None):
+    networks = wireless.scan(iface)
     id = int(request.args.get('id', -1))
     choice = networks[id] if len(networks) > 0 and id >= 0 else None
 
