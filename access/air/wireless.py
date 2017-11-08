@@ -245,7 +245,7 @@ def join(iface, ssid, passwd=None):
     sleep(5)
     # Connect
     state = append_text(wpa_cli(iface, 'status'))
-    if not get_wpastatus(state) == 'COMPLETED'
+    if not get_wpastatus(state) == 'COMPLETED':
        logging.warning('Could not connect to network')
        return False
 
