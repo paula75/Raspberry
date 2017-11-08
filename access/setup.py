@@ -1,6 +1,6 @@
 
 import os
-
+import subprocess
 
 def matching_line(lines, keyword):
     """Returns the first matching line in a list of lines. See match()"""
@@ -28,8 +28,10 @@ def append_text(out):
     return cells
 
 
-def checkWiFi(void):
-    state = os.system('iwconfig')
+def checkWiFi():
+    proc = subprocess.Popen(["iwconfig"],
+            stdout=subprocess.PIPE, universal_newlines=True)
+    out, err = proc.communicate()
     state = matching_line(append_text(state), "ESSID:")
     if state == "off":
         return False
