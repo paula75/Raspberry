@@ -17,8 +17,8 @@ current = None
 
 @app.route('/reload', methods=['GET'])
 def reload():
-    # networks = wireless.scan(iface)
-    # app.logger.debug(networks)
+    networks = wireless.scan(iface)
+    app.logger.debug(networks)
     return jsonify(result=True)
 
 
