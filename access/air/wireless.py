@@ -4,6 +4,7 @@
 
 import sys
 import subprocess
+import time
 
 import logging
 logging.basicConfig(format='%(levelname)s - %(message)s')
@@ -51,6 +52,9 @@ def get_encryption(cell):
 
 def get_address(cell):
     return matching_line(cell, "Address: ")
+
+def get_wpastatus(cell):
+    return matching_line(cell, "wpa_state=")
 
 
 # Here's a dictionary of rules that will be applied to the description of each
@@ -102,11 +106,14 @@ def match(line, keyword):
     else:
         return None
 
-
-
+def append_text(out):
+    cells = []
+    for line in out.split("\n"):
+        cells.append(line)
+    return cells
 
 def print_table(table):
-    # functional magic
+    """"""
     widths = map(max, map(lambda l: map(len, l), zip(*table)))
 
     justified_table = []
@@ -121,8 +128,8 @@ def print_table(table):
             print el,
         print
 
-
 def print_cells(cells):
+    #
     table = [columns]
     for cell in cells:
         cell_properties = []
@@ -235,15 +242,14 @@ def join(iface, ssid, passwd=None):
         logging.warning('Could not enable network')
         return False
 
-    # Check if the connection is done
-
+    sleep(5)
     # Connect
-    #if wpa_cli_fail(iface, 'reconnect'):
-    #    logging.warning('Could not connect to network')
-    #    return False
+    state = append_text(wpa_cli(iface, 'status'))
+    if not get_wpastatus(state) == 'COMPLETED'
+       logging.warning('Could not connect to network')
+       return False
 
     # Renew address
-
     return network
 
 # Check if there is a network saved
