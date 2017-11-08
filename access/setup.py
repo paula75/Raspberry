@@ -46,8 +46,7 @@ print("Move dnsmasq file")
 movefile('/etc/dnsmasq.conf', './hostapd/oldfiles')
 copyfile('./hostapd/etc/dnsmasq.conf', '/etc/')
 
-print("Move hostapd file")
-movefile('/etc/hostapd/hostapd.conf', './hostapd/oldfiles')
+print("copy hostapd file")
 copyfile('./hostapd/etc/hostapd/hostapd.conf', '/etc/hostapd/')
 
 print("Move hostapd default file")

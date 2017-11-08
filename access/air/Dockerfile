@@ -2,12 +2,12 @@ FROM resin/rpi-raspbian:jessie
 
 MAINTAINER Felipe Lalanne <felipe@lalanne.cl>
 
-RUN echo "deb http://archive.raspbian.org/raspbian jessie main" > /etc/apt/sources.list
-RUN apt-get update && apt-get -q -y install \
-        wireless-tools \
-        wpasupplicant \
-        python \
-        python-pip
+#RUN echo "deb http://archive.raspbian.org/raspbian jessie main" > /etc/apt/sources.list
+#RUN apt-get update && apt-get -q -y install \
+#        wireless-tools \
+#        wpasupplicant \
+#        python \
+#        python-pip
 
 ADD . /air
 WORKDIR /air
