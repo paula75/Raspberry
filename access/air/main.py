@@ -9,15 +9,11 @@ app = Flask(__name__)
 iface = os.environ.get('IFACE', 'wlan0')
 
 # Start wpa_supplicant
-# wireless.wpa_supplicant(iface)
+wireless.wpa_supplicant(iface)
 
 # Store the list of networks
-# networks = wireless.scan(iface)
+networks = wireless.scan(iface)
 current = None
-networks = None
-choice = None
-notification = None
-enumerate = None
 
 @app.route('/reload', methods=['GET'])
 def reload():
