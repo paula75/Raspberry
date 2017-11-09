@@ -90,3 +90,7 @@ def configure_files():
 
 
 print("Welcome to hostapd application\n")
+if checkWiFi():
+    print("There is a WiFi connection\n")
+else:
+    print("There is not WiFi connection\n")
